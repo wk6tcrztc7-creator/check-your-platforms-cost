@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>구독 서비스 계산기</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .notice {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .service-list {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+
+    .service-item {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .results {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .results span {
+      color: #e60023; /* 강조 색상 */
+    }
+  </style>
+</head>
+<body>
+  <h1>구독 서비스 선택</h1>
+  <div class="notice">* 모든 가격은 1인 시청 기준입니다 *</div>
+
+  <div class="service-list">
+    <label class="service-item"><input type="checkbox" value="13500" /> 넷플릭스 (13,500원)</label>
+    <label class="service-item"><input type="checkbox" value="9500" /> 티빙 (9,500원)</label>
+    <label class="service-item"><input type="checkbox" value="9500" /> 왓챠 베이직 (9,500원)</label>
+    <label class="service-item"><input type="checkbox" value="9900" /> 라프텔 베이직 (9,900원)</label>
+    <label class="service-item"><input type="checkbox" value="9000" /> 웨이브 (9,000원)</label>
+    <label class="service-item"><input type="checkbox" value="9900" /> 디즈니 플러스 (9,900원)</label>
+    <label class="service-item"><input type="checkbox" value="19500" /> 유튜브 프리미엄 (19,500원)</label>
+    <label class="service-item"><input type="checkbox" value="8900" /> 애플뮤직 (8,900원)</label>
+    <label class="service-item"><input type="checkbox" value="9900" /> 지니 뮤직 (9,900원)</label>
+    <label class="service-item"><input type="checkbox" value="8690" /> 멜론 (8,690원)</label>
+    <label class="service-item"><input type="checkbox" value="4900" /> 위버스 (4,900원)</label>
+    <label class="service-item"><input type="checkbox" value="7900" /> 프라이빗메세지 (7,900원)</label>
+    <label class="service-item"><input type="checkbox" value="4500" /> 버블 (4,500원)</label>
+  </div>
+
+  <div class="results">
+    📅 한달 마다 나가는 금액: <span id="monthly">0</span>원<br />
+    📆 1년 마다 나가는 금액: <span id="yearly">0</span>원
+  </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const monthlyEl = document.getElementById('monthly');
+    const yearlyEl = document.getElementById('yearly');
+
+    function updateTotal() {
+      let total = 0;
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          total += parseInt(checkbox.value);
+        }
+      });
+
+      monthlyEl.textContent = total.toLocaleString();
+      yearlyEl.textContent = (total * 12).toLocaleString();
+    }
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', updateTotal);
+    });
+  </script>
+</body>
+</html>
