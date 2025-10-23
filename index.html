@@ -43,9 +43,18 @@
     .results span {
       color: #e60023; /* 강조 색상 */
     }
-      .bubble-count {
+    
+     .bubble-count {
       margin-left: 10px;
-      width: 50px;
+      width: 60px;
+    }
+
+    label.service-item input[type="number"] {
+      display: none;
+    }
+
+    label.service-item.bubble-active input[type="number"] {
+      display: inline-block;
     }
   </style>
 </head>
@@ -97,4 +106,5 @@
   </script>
 </body>
 </html>
+
 
